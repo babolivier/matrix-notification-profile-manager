@@ -4,7 +4,7 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/babolivier/matrix-notification-profile-manager/types"
+	"github.com/babolivier/matrix-notification-profile-manager/profilemanager/types"
 
 	"github.com/matrix-org/gomatrix"
 )

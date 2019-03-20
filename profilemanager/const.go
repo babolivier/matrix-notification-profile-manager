@@ -1,7 +1,7 @@
 package profilemanager
 
 import (
-	"github.com/babolivier/matrix-notification-profile-manager/types"
+	"github.com/babolivier/matrix-notification-profile-manager/profilemanager/types"
 )
 
 // Action is the action to take for a given rule.
