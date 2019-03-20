@@ -1,0 +1,8 @@
+# Matrix settings.
+matrix:
+    # The scheme + domain we need to reach the homeserver.
+    hs_url: https://matrix.example.com
+    # An access token to authenticate requests against the homeserver.
+    access_token: SOME_TOKEN
+    # The user's user ID.
+    user_id: "@brendan:abolivier.bzh"
