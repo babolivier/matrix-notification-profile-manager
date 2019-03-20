@@ -40,6 +40,7 @@ func init() {
 	var err error
 	if mode, err = GetModeFromFlags(); err != nil {
 		log.Error(errors.Wrap(err, "Error when parsing the commant-line arguments"))
+		// TODO: Make flag.Usage nicer (with separate sections for modes and other settings).
 		flag.Usage()
 		os.Exit(1)
 	}
