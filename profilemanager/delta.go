@@ -5,6 +5,7 @@ import (
 	"github.com/babolivier/matrix-notification-profile-manager/profilemanager/types"
 
 	"github.com/matrix-org/gomatrix"
+	log "github.com/sirupsen/logrus"
 )
 
 // resolveDelta checks which rules from srcMap don't appear in refMap and adds
@@ -16,6 +17,7 @@ func resolveDelta(srcMap, refMap map[string]types.PushRule, act Action, delta *[
 		// Check if the rule is missing from the reference map.
 		if _, ok := refMap[ruleID]; !ok {
 			// If the rule is missing from the reference map, add it to the delta.
+			log.Debugf("Adding rule %s to delta", ruleID)
 			*delta = append(*delta, deltaRule{
 				action: act,
 				rule:   srcMap[ruleID],
@@ -34,11 +36,13 @@ func applyDelta(cli *gomatrix.Client, delta []deltaRule) (err error) {
 		// Act according to the action.
 		if deltaRule.action == ACTION_ADD {
 			// Add the rule to the user's settings.
+			log.Debugf("Add rule %s to user settings", deltaRule.rule.RuleID)
 			if err = matrix.AddPushRule(cli, deltaRule.rule); err != nil {
 				return err
 			}
 		} else if deltaRule.action == ACTION_DELETE {
 			// Delete the rule from the user's settings.
+			log.Debugf("Deleting rule %s from user settings", deltaRule.rule.RuleID)
 			if err = matrix.DeletePushRule(cli, deltaRule.rule); err != nil {
 				return err
 			}

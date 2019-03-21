@@ -29,6 +29,7 @@ func init() {
 	// Additional settings.
 	profilename = flag.String("name", "", "If used with --snapshot, name of the profile to create. Otherwise, name of the profile to apply or delete.")
 	overwriteSnapshot = flag.Bool("overwrite", false, "Optional. If used with --snapshot and if a profile already exists with that name, overwrites it with the new snapshot. Useless otherwise.")
+	debugLogging := flag.Bool("debug", false, "Enable debug logging")
 
 	// Config settings.
 	configPath = flag.String("config", "config.yaml", "The path to the configuration file.")
@@ -43,6 +44,11 @@ func init() {
 		// TODO: Make flag.Usage nicer (with separate sections for modes and other settings).
 		flag.Usage()
 		os.Exit(1)
+	}
+
+	// Enable debug logging in the lib if required.
+	if *debugLogging {
+		profilemanager.EnableDebugLogging()
 	}
 }
 
