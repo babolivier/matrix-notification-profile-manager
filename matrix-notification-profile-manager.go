@@ -65,6 +65,7 @@ func main() {
 		if err = profilemanager.SnapshotSettings(cli, *profilename, mode == MODE_SNAPSHOT_OVERWRITE); err != nil {
 			log.Fatal(errors.Wrap(err, "Snapshot failed"))
 		}
+		log.Printf("Profile \"%s\" saved from current notification settings", *profilename)
 	case MODE_LIST:
 		// Listing doesn't require any profile manipulation, so we do it from
 		// the profilemanager/matrix package directly.
@@ -82,9 +83,11 @@ func main() {
 		if err = profilemanager.ApplyProfile(cli, *profilename); err != nil {
 			log.Fatal(errors.Wrap(err, "Applying profile failed"))
 		}
+		log.Printf("Profile \"%s\" applied", *profilename)
 	case MODE_DELETE:
 		if err = profilemanager.DeleteProfile(cli, *profilename); err != nil {
 			log.Fatal(errors.Wrap(err, "Deleting profile failed"))
 		}
+		log.Printf("Profile \"%s\" deleted", *profilename)
 	}
 }

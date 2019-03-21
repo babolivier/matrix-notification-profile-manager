@@ -6,7 +6,6 @@ import (
 	"github.com/babolivier/matrix-notification-profile-manager/profilemanager/matrix"
 
 	"github.com/matrix-org/gomatrix"
-	log "github.com/sirupsen/logrus"
 )
 
 // SnapshotSettings takes a snapshot of the current notifications settings for
@@ -28,7 +27,6 @@ func SnapshotSettings(cli *gomatrix.Client, name string, overwrite bool) error {
 		return err
 	}
 
-	log.Printf("Profile \"%s\" saved from current notification settings", name)
 	return nil
 }
 
@@ -65,8 +63,6 @@ func ApplyProfile(cli *gomatrix.Client, name string) error {
 		return err
 	}
 
-	log.Printf("Profile \"%s\" applied", name)
-
 	return nil
 }
 
@@ -78,8 +74,6 @@ func DeleteProfile(cli *gomatrix.Client, name string) error {
 	if err := matrix.DeleteProfile(cli, name); err != nil {
 		return err
 	}
-
-	log.Printf("Profile \"%s\" deleted", name)
 
 	return nil
 }
