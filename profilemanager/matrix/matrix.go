@@ -1,3 +1,5 @@
+// Package matrix implements Matrix-specific operations and logic for managing
+// push notification settings profiles for Matrix users.
 package matrix
 
 import (

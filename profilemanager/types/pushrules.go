@@ -1,3 +1,5 @@
+// Package types implements types for managing push notification settings
+// profiles for Matrix users.
 package types
 
 // PushRules implements the response structure from

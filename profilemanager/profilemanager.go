@@ -1,3 +1,5 @@
+// Package profilemanager implements util functions for managing push
+// notification settings profiles for Matrix users.
 package profilemanager
 
 import (
