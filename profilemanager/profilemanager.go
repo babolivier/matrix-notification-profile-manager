@@ -43,6 +43,7 @@ func SnapshotSettings(cli *gomatrix.Client, name string, overwrite bool) error {
 }
 
 // ApplyProfile retrieves and apply a notification profile.
+// Returns matrix.ErrProfileNotExists if the required profile doesn't exist.
 // Returns an error if retrieving the profile or applying it failed.
 func ApplyProfile(cli *gomatrix.Client, name string) error {
 	log.Debugf("Applying profile %s", name)
@@ -53,6 +54,11 @@ func ApplyProfile(cli *gomatrix.Client, name string) error {
 		return err
 	}
 	log.Debugf("Retrieved %d profiles", len(profiles))
+
+	// Check if the profile exists.
+	if _, ok := profiles[name]; !ok {
+		return matrix.ErrProfileNotExists
+	}
 
 	profileRules := profiles[name]
 	profileRulesMap := profileRules.ToRulesMap()
