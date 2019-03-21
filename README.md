@@ -129,3 +129,11 @@ The type of the data is `bzh.abolivier.profiles.push`, and its structure is:
 Here, `default` and `profile1` are two profiles' names, and the data associated
 follow the structure for the response format of [this Matrix
 endpoint](https://matrix.org/docs/spec/client_server/r0.4.0.html#get-matrix-client-r0-pushrules).
+
+## What's next
+
+Here's a quick preview on the next improvements I'd like to make on this work:
+
+* move the push rules management at the Matrix level to [gomatrix](https://github.com/matrix-org/gomatrix)
+* implement renaming a profile
+* ...
