@@ -6,7 +6,7 @@
 configuring notification settings. However, this can result in a lot of
 operations when setting the overall client settings to a desired configuration.
 
-The Matrix notification profile manager provides both a command line interface
+Matrix notification profile manager provides both a command line interface
 and a Go package that allows one to manage notification settings profiles. It
 works by snapshotting notification settings at a given time, saving that
 snapshot as a profile, and switching from one profile to another by adding or
