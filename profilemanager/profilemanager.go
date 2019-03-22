@@ -80,7 +80,7 @@ func ApplyProfile(cli *gomatrix.Client, name string) error {
 	// If a rule in the current rules isn't in the profile, we must delete it
 	resolveDelta(currentRulesMap, profileRulesMap, ACTION_DELETE, &delta)
 
-	log.Debugf("Got %d rules in delta")
+	log.Debugf("Got %d rules in delta", len(delta))
 
 	// Apply the delta (i.e. add and delete the necessary rules).
 	if err = applyDelta(cli, delta); err != nil {
