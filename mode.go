@@ -52,6 +52,12 @@ func GetModeFromFlags() (mode Mode, err error) {
 		return
 	}
 
+	// Check if a mode was set.
+	if mode == NO_MODE {
+		err = errNoMode
+		return
+	}
+
 	// Check if we the profile name is required.
 	if mode != MODE_LIST {
 		if len(*profilename) == 0 {
@@ -63,12 +69,6 @@ func GetModeFromFlags() (mode Mode, err error) {
 	// Check if we can overwrite in snapshot mode.
 	if mode == MODE_SNAPSHOT && *overwriteSnapshot {
 		mode = MODE_SNAPSHOT_OVERWRITE
-	}
-
-	// Check if a mode was set.
-	if mode == NO_MODE {
-		err = errNoMode
-		return
 	}
 
 	return
